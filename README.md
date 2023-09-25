@@ -1,4 +1,4 @@
-<span style="color:red">ShortNews_Project</span>
+# ShortNews_Project
 
 test
 test
