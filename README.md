@@ -1,4 +1,3 @@
 # ShortNews_Project
-
-test
-test
+YJ_Capstone
+IST_eam
