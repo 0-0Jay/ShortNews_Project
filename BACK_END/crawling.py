@@ -5,6 +5,7 @@ import time
 from selenium.webdriver.common.by import By
 import codecs
 import csv
+from newspaper import Article
 
 def basic_clear(text) :
     text = text.replace('\n', '')
@@ -12,6 +13,8 @@ def basic_clear(text) :
     text = text.replace('">', ' ')
     text = text.replace('</a></dt>', '')
     text = text.replace('\t', '')
+    text = text.replace('[', '')
+    text = text.replace(']', '')
     return text
 
 # 브라우저 켜기
@@ -25,11 +28,11 @@ browser.get(url)
 book_rank = 0
 
 # cvs 파일 저장
-f1 = open(r'.\test.csv', 'w', newline='')
+f1 = open(r'.\test.csv', 'w', newline='', encoding='utf-8')
 wr = csv.writer(f1)
-wr.writerow(['title', 'link'])
+wr.writerow(['title', 'content', 'link'])
 
-for i in range(1, 11):
+for i in range(1, 2):
     # 네이버 뉴스 -> 정치 -> 행정 페이지
     browser.get('https://news.naver.com/main/list.naver?mode=LS2D&sid2=266&sid1=100&mid=shm&date=20230925&page=%s' % i)
     
@@ -57,12 +60,48 @@ for i in range(1, 11):
 
         space = temp.index(' ')
         link = temp[:space]
-        title = temp[space + 1:].strip()
+
+        article = Article(link, language = "ko")
+        article.download()
+        article.parse()
+        title = article.title
+        text = article.text
+
+        #title = temp[space + 1:].strip()
         
-        wr.writerow([title, link])
+        wr.writerow([title, text, link])
+
+    #section_body > ul.type06_headline > li:nth-child(1) > dl > dt:nth-child(2) > a
+    # 행정 페이지 class가 다음과 같은 블록 중 ul가져옴(?)
+    ul_list = parsed_source.find_all("ul", class_="type06")
+    
+    ul_list = ul_list[0]
+    
+    # ul -> dt태그 의 두 번째 자식 태그
+    div_image_list = ul_list.select("dt:nth-child(2)")
+    for idx, item in enumerate(div_image_list):
+        temp = basic_clear(str(item)) # 특수기호 및 공백 처리
+
+        space = temp.index(' ')
+        link = temp[:space]
+
+        article = Article(link, language = "ko")
+        article.download()
+        article.parse()
+        title = article.title
+        text = article.text
+
+        #title = temp[space + 1:].strip()
+        
+        wr.writerow([title, text, link])
+
+
 f1.close()
-
-
+f1 = open(r'.\test.csv', 'r', encoding='utf-8')
+spamreader = csv.reader(f1)
+for row in spamreader:
+    print(row)
+f1.close()
 """
 ###pandas code###
 
