@@ -1,0 +1,33 @@
+// 테이블 대충 만든거라 실전엔선 제약조건 이름 다 정하고 할 거임
+CREATE TABLE categoryNews (
+	news_id VARCHAR2(50) primary key,
+	cate_id 	varchar2(10) Not null,
+	title	VARCHAR2(255),
+	content	VARCHAR2(255),
+    CONSTRAINT news_cateId_fk foreign key(cate_id) references category(cate_id)
+);
+CREATE TABLE category (
+	cate_id varchar2(10) primary key,
+	name	VARCHAR(255)
+);
+CREATE TABLE usr (
+	user_id varchar2(10) primary key
+);
+
+CREATE TABLE pref (
+	user_id varchar2(10),
+    cate_id varchar(10),
+    constraint pref_usrid_fk foreign key(user_id) references usr(user_id),
+    constraint pref_cateid_fk foreign key(cate_id) references category(cate_id),
+    constraint pref_ju_identi primary key(user_id, cate_id)
+);
+// 이부분임
+select cg.name, news.news_id, news.title, news.content 
+from pref pre 
+join category cg
+on (pre.cate_id = cg.cate_id)
+join categorynews news
+on (pre.cate_id = news.cate_id)
+where pre.user_id = 1
+AND news.news_id like to_char(sysdate, 'yymmdd') || '%'
+order by 1;
