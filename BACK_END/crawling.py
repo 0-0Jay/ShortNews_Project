@@ -1,9 +1,7 @@
 from bs4 import BeautifulSoup            
-import requests                          
 from selenium import webdriver           
 import time                              
 from selenium.webdriver.common.by import By
-import codecs
 import csv
 from newspaper import Article
 
@@ -69,38 +67,7 @@ for i in range(1, 2):
 
         #title = temp[space + 1:].strip()
         
-        wr.writerow([title, text, link])
-
-    #section_body > ul.type06_headline > li:nth-child(1) > dl > dt:nth-child(2) > a
-    # 행정 페이지 class가 다음과 같은 블록 중 ul가져옴(?)
-    ul_list = parsed_source.find_all("ul", class_="type06")
-    
-    ul_list = ul_list[0]
-    
-    # ul -> dt태그 의 두 번째 자식 태그
-    div_image_list = ul_list.select("dt:nth-child(2)")
-    for idx, item in enumerate(div_image_list):
-        temp = basic_clear(str(item)) # 특수기호 및 공백 처리
-
-        space = temp.index(' ')
-        link = temp[:space]
-
-        article = Article(link, language = "ko")
-        article.download()
-        article.parse()
-        title = article.title
-        text = article.text
-
-        #title = temp[space + 1:].strip()
-        
-        wr.writerow([title, text, link])
-
-
-f1.close()
-f1 = open(r'.\test.csv', 'r', encoding='utf-8')
-spamreader = csv.reader(f1)
-for row in spamreader:
-    print(row)
+        wr.writerow([title, link])
 f1.close()
 """
 ###pandas code###
