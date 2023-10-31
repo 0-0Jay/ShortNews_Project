@@ -17,10 +17,11 @@ ERD(erdcloud) : https://www.erdcloud.com/d/szTBpE6tEqjfwLGJP
  2) 기본값은 main 브랜치로 되어있을 건데 변경부탁드립니다. (코드 충돌 방지, 오류 제어, 모듈화 등등 위함)<br>
  <br>
  <h4>GitHub Desktop의 경우</h4>
- ![image](https://github.com/0-0Jay/ShortNews_Project/assets/117143398/2182ab8a-ce9f-4b57-b394-dca505ecb841)<br>
+ ![image](https://github.com/0-0Jay/ShortNews_Project/assets/117143398/2182ab8a-ce9f-4b57-b394-dca505ecb841)
+ <br>
  위와 같이 레포지토리와 브랜치(자기 성씨)로 바꾸기
  <h4>터미널로 진행하는 경우</h4>
- git remote add 별칭 https://github.com/0-0Jay/shortnews_Project.git   <- 레포지토리 변경 (안되면 알아서 찾아서...)
+ git remote add 별칭 https://github.com/0-0Jay/shortnews_Project.git   <- 레포지토리 변경 (안되면 알아서 찾아서...)<br>
  git checkout 성  <- 브랜치 변경
  <br>
  <br>
