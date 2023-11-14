@@ -1,0 +1,36 @@
+/* 메인 네비게이션 바 */
+.nav-bar {
+  background-color: #f2f2f2;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px 3px;
+  border-bottom: #282c34 1px solid;
+}
+.nav-bar-column {
+  /* 네비게이션 바 3분할 */
+  width: 33%;
+}
+.nav-bar-column:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+.nav-bar-column:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16%;
+}
+.nav-notification {
+  /* 알림 뱃지 */
+  position: absolute;
+  left: 92%;
+  top: 31%;
+  background-color: tomato;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
