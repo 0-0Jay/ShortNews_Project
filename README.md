@@ -8,8 +8,8 @@ IST_eam
 <br>
 ERD(erdcloud) : https://www.erdcloud.com/d/szTBpE6tEqjfwLGJP
 <br>
-
-<h2>다운 받은 모듈</h2>
+<hr>
+<h2>React 모듈</h2>
 1. react-responsive <br>
 2. react-bootstrap <br>
 3. react-router-dom<br>
