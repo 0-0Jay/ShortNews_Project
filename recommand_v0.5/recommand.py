@@ -60,4 +60,9 @@ def recommand_nid(target, log : pd.DataFrame, sim : pd.DataFrame):
                         non_sel_cate_recommend[title[1]] += score
     return sel_cate_recommend, non_sel_cate_recommend
 
-z
+def recommand_result(nid : dict, n : int):
+    news = db.select(columns=['news_id', 'cate_id', 'title'], table='test_news')
+    res = dict(sorted(nid.items(), key=lambda x : -x[1]))
+    news_id = pd.DataFrame({"news_id" : res.keys()})
+    result = pd.merge(news_id, news, on="news_id")
+    return result.head(n)
