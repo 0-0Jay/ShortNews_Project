@@ -1,6 +1,6 @@
 package com.ShortNews.ShortNews.repository;
 
-import com.ShortNews.ShortNews.dto.BookmarkInterface;
+import com.ShortNews.ShortNews.dto.ActivityNewsInterface;
 import com.ShortNews.ShortNews.entity.Bookmark;
 import com.ShortNews.ShortNews.entity.BookmarkKey;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,12 +14,14 @@ import java.util.List;
 
 @Repository
 public interface BookmarkRepository extends JpaRepository<Bookmark, BookmarkKey> {
-    @Query(value = "SELECT b.id, n.cate_id, n.news_id, n.title " +
-            "FROM news n JOIN bookmark b " +
-            "ON n.news_id = b.news_id " +
-            "WHERE b.id = :id " +
-            "ORDER BY b.time", nativeQuery = true)
-    public List<BookmarkInterface> selectBookmark(@Param("id") String id);
+    @Query(value = "SELECT n.news_id, n.cate_id, n.title, n.views, n.imgs, " +
+            "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 1) AS good, " +
+            "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 0) AS bad, " +
+            "(SELECT COUNT(*) FROM reply r WHERE r.news_id = n.news_id) AS reply " +
+            "FROM bookmark b " +
+            "JOIN news n on n.news_id = b.news_id " +
+            "WHERE b.id = :id", nativeQuery = true)
+    public List<ActivityNewsInterface> selectBookmark(@Param("id") String id);
 
     @Transactional
     @Modifying

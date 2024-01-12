@@ -1,6 +1,9 @@
 package com.ShortNews.ShortNews.service;
 
-import com.ShortNews.ShortNews.dto.*;
+import com.ShortNews.ShortNews.dto.ActivityNewsInterface;
+import com.ShortNews.ShortNews.dto.ActivityNewsDto;
+import com.ShortNews.ShortNews.dto.ActivityReplyDto;
+import com.ShortNews.ShortNews.dto.ActivityReplyInterface;
 import com.ShortNews.ShortNews.repository.RecommendRepository;
 import com.ShortNews.ShortNews.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +21,11 @@ public class ActivityService {
     @Autowired
     private ReplyRepository replyRepository;
 
-    public List<ActivityLikeDto> getLikeOrDisLike(String id, int type) {
-        System.out.println(id);
-        List<ActivityLikeDto> list = new ArrayList<>();
-        List<ActivityLikeInterface> like_list = recommendRepository.selectLikeNews(id, type);
-        for (ActivityLikeInterface activityLike : like_list) {
-            ActivityLikeDto activityLikeDto = ActivityLikeDto.builder()
+    public List<ActivityNewsDto> getLikeOrDisLike(String id, int type) {
+        List<ActivityNewsDto> list = new ArrayList<>();
+        List<ActivityNewsInterface> like_list = recommendRepository.selectLikeNews(id, type);
+        for (ActivityNewsInterface activityLike : like_list) {
+            ActivityNewsDto activityNewsDto = ActivityNewsDto.builder()
                     .news_id(activityLike.getNews_id())
                     .cate_id(activityLike.getCate_id())
                     .views(activityLike.getViews())
@@ -34,7 +36,7 @@ public class ActivityService {
                     .img(activityLike.getImgs())
                     .bookmark(activityLike.getBookmark())
                     .build();
-            list.add(activityLikeDto);
+            list.add(activityNewsDto);
         }
         return list;
     }

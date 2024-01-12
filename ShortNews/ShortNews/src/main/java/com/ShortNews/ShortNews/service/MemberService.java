@@ -2,8 +2,9 @@ package com.ShortNews.ShortNews.service;
 
 import com.ShortNews.ShortNews.JavaCode;
 import com.ShortNews.ShortNews.Token.RefreshTokenRepository;
-import com.ShortNews.ShortNews.dto.BookmarkDto;
-import com.ShortNews.ShortNews.dto.BookmarkInterface;
+
+import com.ShortNews.ShortNews.dto.ActivityNewsDto;
+import com.ShortNews.ShortNews.dto.ActivityNewsInterface;
 import com.ShortNews.ShortNews.entity.Member;
 import com.ShortNews.ShortNews.entity.Preference;
 import com.ShortNews.ShortNews.entity.PreferenceKey;
@@ -92,26 +93,24 @@ public class MemberService {
         }
     }
 
-    public Map<String, Object> bookmark(String id) {
-        List<BookmarkInterface> bookmarks = bookmarkRepository.selectBookmark(id);
-        Map<String, Object> map = new HashMap<>();
-        for (BookmarkInterface b : bookmarks) {
-            BookmarkDto bookmarkDto = new BookmarkDto(
-                    b.getId(),
-                    b.getCate_id(),
-                    b.getNews_id(),
-                    b.getTitle()
-            );
-            if (!map.containsKey(bookmarkDto.getCate_id())) {
-                map.put(bookmarkDto.getCate_id(), new ArrayList<Map<String, String>>());
-            }
-            ArrayList<Map<String, String>> arr = (ArrayList<Map<String, String>>) map.get(bookmarkDto.getCate_id());
-            Map<String, String> tmp = new HashMap<>();
-            tmp.put("news_id", bookmarkDto.getNews_id());
-            tmp.put("title", bookmarkDto.getTitle());
-            arr.add(tmp);
+    public List<ActivityNewsDto> bookmark(String id) {
+        List<ActivityNewsDto> list = new ArrayList<>();
+        List<ActivityNewsInterface> bookmark_list = bookmarkRepository.selectBookmark(id);
+        for (ActivityNewsInterface activityLike : bookmark_list) {
+            ActivityNewsDto activityNewsDto = ActivityNewsDto.builder()
+                    .news_id(activityLike.getNews_id())
+                    .cate_id(activityLike.getCate_id())
+                    .views(activityLike.getViews())
+                    .like(activityLike.getGood())
+                    .dislike(activityLike.getBad())
+                    .title(activityLike.getTitle())
+                    .reply(activityLike.getReply())
+                    .img(activityLike.getImgs())
+                    .bookmark(1)
+                    .build();
+            list.add(activityNewsDto);
         }
-        return map;
+        return list;
     }
 
     public void deleteBookmark(String id, String news_id) {

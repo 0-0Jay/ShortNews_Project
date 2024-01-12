@@ -108,12 +108,12 @@ public class MemberController {
     @GetMapping("/member/bookmark")
     public Map<String, Object> memberBookmark(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
-        HttpSession session = request.getSession();
-        String id = (String) session.getAttribute("id");
+        String token = jwtTokenProvider.resolveToken(request);
+        String id = jwtTokenProvider.getUserPk(token);
         if (id == null) {
             map.put("status", HttpStatus.BAD_REQUEST);
         } else {
-            map = memberService.bookmark(id);
+            map.put("bookmark",memberService.bookmark(id));
             map.put("status", HttpStatus.OK);
         }
         return map;
@@ -122,8 +122,8 @@ public class MemberController {
     @DeleteMapping("/member/deleteBookmark")
     public Map<String, Object> memberDeleteBookmark(HttpServletRequest request, @RequestBody Map<String, Object> resultMap) {
         Map<String, Object> map = new HashMap<>();
-        HttpSession session = request.getSession();
-        String id = (String) session.getAttribute("id");
+        String token = jwtTokenProvider.resolveToken(request);
+        String id = jwtTokenProvider.getUserPk(token);
         String news_id = (String) resultMap.get("news_id");
         if (id == null || news_id == null) {
             map.put("status", HttpStatus.BAD_REQUEST);
