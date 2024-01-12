@@ -115,7 +115,6 @@ public class SignupController {
         cookie.setHttpOnly(true);
         cookie.setPath("/");
         response.addCookie(cookie);
-        map.put("dto", sessionDto);
         map.put("access_token", token);
         map.put("refresh_token", refresh_token);
         map.put("status", HttpStatus.OK);

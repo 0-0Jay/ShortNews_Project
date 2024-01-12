@@ -6,20 +6,26 @@ import lombok.Data;
 @Data
 public class ActivityLikeDto {
 
-    private String id;
-    private String content;
-    private Integer type;
-    private String time;
-
-    public ActivityLikeDto() {
-
-    }
+    private String news_id;
+    private String cate_id;
+    private String title;
+    private Integer views;
+    private Integer bookmark;
+    private Integer like;
+    private Integer dislike;
+    private Integer reply;
+    private String img;
 
     @Builder
-    public ActivityLikeDto(String id, String content, Integer type, String time) {
-        this.id = id;
-        this.content = content;
-        this.type = type;
-        this.time = time;
+    public ActivityLikeDto(String news_id, String cate_id, String title, Integer views, Integer bookmark, Integer like, Integer dislike, Integer reply, String img) {
+        this.news_id = news_id;
+        this.cate_id = cate_id;
+        this.title = title;
+        this.views = views;
+        this.bookmark = bookmark;
+        this.like = like;
+        this.dislike = dislike;
+        this.reply = reply;
+        this.img = img;
     }
 }
