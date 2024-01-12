@@ -27,6 +27,16 @@ public interface RecommendRepository extends JpaRepository<Recommend, String> {
 //    @Modifying
 //    @Transactional
 //    public void offLike(@Param("id") String id, @Param("news_id") String news_id);
+    @Query(value = "SELECT n.news_id, n.cate_id, n.title, n.views, n.imgs," +
+        "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 1) AS good," +
+        "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 0) AS bad," +
+        "(SELECT COUNT(*) FROM reply r WHERE r.news_id = n.news_id) AS reply, " +
+        "(SELECT COUNT(*) FROM bookmark b WHERE b.news_id = n.news_id and b.id = l.id) AS bookmark " +
+        "FROM news n " +
+        "JOIN recommend l on n.news_id = l.news_id " +
+        "WHERE l.id = :id and l.type = :type", nativeQuery = true)
+    List<ActivityLikeInterface> selectLikeNews(@Param("id") String id, @Param("type") Integer type);
+
 
     @Query(value = "insert into Recommend values(:rec_id, :id, null, :news_id, 1)", nativeQuery = true)
     @Modifying
@@ -38,16 +48,6 @@ public interface RecommendRepository extends JpaRepository<Recommend, String> {
     @Transactional
     public void onDisLike(@Param("rec_id") String rec_id, @Param("id") String id, @Param("news_id") String news_id);
 
-    @Query(value = "SELECT n.news_id, n.cate_id, n.title, n.views, n.imgs," +
-            "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 1) AS good," +
-            "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 0) AS bad," +
-            "(SELECT COUNT(*) FROM reply r WHERE r.news_id = n.news_id) AS reply, " +
-            "(SELECT COUNT(*) FROM bookmark b WHERE b.news_id = n.news_id and b.id = l.id) AS bookmark " +
-            "FROM news n " +
-            "JOIN recommend l on n.news_id = l.news_id " +
-            "WHERE l.id = :id and l.type = :type", nativeQuery = true)
-    List<ActivityLikeInterface> selectLikeNews(@Param("id") String id, @Param("type") Integer type);
-
 
     @Query(value = "update recommend set type = :type where news_id = :news_id", nativeQuery = true)
     @Modifying
@@ -58,4 +58,25 @@ public interface RecommendRepository extends JpaRepository<Recommend, String> {
     @Modifying
     @Transactional
     public void deleteLike(@Param("news_id") String news_id, @Param("id") String id);
+
+    @Query(value = "insert into Recommend values(:rec_id, :id, :reply_id, null, 1)", nativeQuery = true)
+    @Modifying
+    @Transactional
+    public void onReplyLike(@Param("rec_id") String rec_id, @Param("id") String id, @Param("reply_id") String reply_id);
+
+    @Query(value = "insert into Recommend values(:rec_id, :id, :reply_id, null, 0)", nativeQuery = true)
+    @Modifying
+    @Transactional
+    public void onReplyDisLike(@Param("rec_id") String rec_id, @Param("id") String id, @Param("reply_id") String reply_id);
+
+
+    @Query(value = "update recommend set type = :type where reply_id = :reply_id", nativeQuery = true)
+    @Modifying
+    @Transactional
+    public void updateReplyLike(@Param("reply_id") String reply_id, @Param("type") String type);
+
+    @Query(value = "delete from recommend where reply_id = :reply_id and id = :id", nativeQuery = true)
+    @Modifying
+    @Transactional
+    public void deleteReplyLike(@Param("reply_id") String reply_id, @Param("id") String id);
 }

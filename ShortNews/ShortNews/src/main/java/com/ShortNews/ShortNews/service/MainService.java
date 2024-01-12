@@ -3,10 +3,7 @@ package com.ShortNews.ShortNews.service;
 import com.ShortNews.ShortNews.JavaCode;
 import com.ShortNews.ShortNews.dto.*;
 import com.ShortNews.ShortNews.entity.*;
-import com.ShortNews.ShortNews.repository.BookmarkRepository;
-import com.ShortNews.ShortNews.repository.NewsRepository;
-import com.ShortNews.ShortNews.repository.RecommendRepository;
-import com.ShortNews.ShortNews.repository.ReplyRepository;
+import com.ShortNews.ShortNews.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +26,8 @@ public class MainService {
     private EntityManager entityManager;
     @Autowired
     private ReplyRepository replyRepository;
+    @Autowired
+    private ReportRepository reportRepository;
 
     public Map<String, Object> News(String category, String date, String id) {
         List<News> list = newsRepository.selectNews(category, date);
@@ -114,24 +113,40 @@ public class MainService {
         return newsDto;
     }
 
-    public boolean like(String id, String news_id, String before, String after) {
+    public boolean like(String id, String type, String before, String after, String what) {
         String time = javaCode.getTime();
         String str = "select recommend_seq.nextval from dual";
         Query query = entityManager.createNativeQuery(str);
         String num = query.getSingleResult().toString();
         String rec_id = time + num;
 
-        if (before.equals("-1") && after.equals("1")) {
-            recommendRepository.onLike(rec_id, id, news_id);
-        } else if (before.equals("-1") && after.equals("0")) {
-            recommendRepository.onDisLike(rec_id, id, news_id);
-        } else if (before.equals("1") && after.equals("0") || before.equals("0") && after.equals("1")) {
-            recommendRepository.updateLike(news_id, after);
-        } else if (before.equals("1") && after.equals("1") || before.equals("0") && after.equals("0")) {
-            recommendRepository.deleteLike(news_id, id);
+        if (what.equals("news")) {
+            if (before.equals("-1") && after.equals("1")) {
+                recommendRepository.onLike(rec_id, id, type);
+            } else if (before.equals("-1") && after.equals("0")) {
+                recommendRepository.onDisLike(rec_id, id, type);
+            } else if (before.equals("1") && after.equals("0") || before.equals("0") && after.equals("1")) {
+                recommendRepository.updateLike(type, after);
+            } else if (before.equals("1") && after.equals("1") || before.equals("0") && after.equals("0")) {
+                recommendRepository.deleteLike(type, id);
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            if (before.equals("-1") && after.equals("1")) {
+                recommendRepository.onReplyLike(rec_id, id, type);
+            } else if (before.equals("-1") && after.equals("0")) {
+                recommendRepository.onReplyDisLike(rec_id, id, type);
+            } else if (before.equals("1") && after.equals("0") || before.equals("0") && after.equals("1")) {
+                recommendRepository.updateReplyLike(type, after);
+            } else if (before.equals("1") && after.equals("1") || before.equals("0") && after.equals("0")) {
+                recommendRepository.deleteReplyLike(type, id);
+            } else {
+                return false;
+            }
         }
+
+
         return true;
     }
 
@@ -231,5 +246,18 @@ public class MainService {
 
     public void delete(String reply_id) {
         replyRepository.deleteById(reply_id);
+    }
+
+    public void report(String id, String content, String type, String reply_id, String news_id) {
+        System.out.println(id);
+        System.out.println(content);
+        System.out.println(type);
+        System.out.println(reply_id);
+        System.out.println(news_id);
+        if (reply_id == null) {
+            reportRepository.insertReport(id, type, content, news_id);
+        } else {
+            reportRepository.insertReplyReport(id, type, content, reply_id, news_id);
+        }
     }
 }

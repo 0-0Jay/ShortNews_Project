@@ -61,18 +61,27 @@ public class MainController {
 
     @PatchMapping("/main/like") // OK
     public Map<String, Object> mainLike(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
-        String news_id, before, after, token, userPk;
+        String news_id, before, after, token, userPk, reply_id;
         Map<String, Object> map = new HashMap<>();
         token = jwtTokenProvider.resolveToken(request);
         userPk = jwtTokenProvider.getUserPk(token);
-        news_id = resultMap.get("news_id").toString();
+        reply_id = (String)resultMap.get("reply_id");
+        news_id = (String)resultMap.get("news_id");
+        System.out.println(reply_id + " " + news_id);
         before = resultMap.get("before").toString();
         after = resultMap.get("after").toString();
-
-        if (mainService.like(userPk, news_id, before, after)) {
-            map.put("status", HttpStatus.OK);
+        if (reply_id == null) {
+            if (mainService.like(userPk, news_id, before, after, "news")) {
+                map.put("status", HttpStatus.OK);
+            } else {
+                map.put("status", HttpStatus.BAD_REQUEST);
+            }
         } else {
-            map.put("status", HttpStatus.BAD_REQUEST);
+            if (mainService.like(userPk, reply_id, before, after, "reply")) {
+                map.put("status", HttpStatus.OK);
+            } else {
+                map.put("status", HttpStatus.BAD_REQUEST);
+            }
         }
         return map;
     }
@@ -150,6 +159,21 @@ public class MainController {
         mainService.delete(reply_id);
         map.put("status", HttpStatus.OK);
         map.put("replies", mainService.reply(news_id));
+        return map;
+    }
+
+    @PostMapping("/main/report")
+    public Map<String, Object> mainReport(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
+        String token, userPk, content, type, reply_id, news_id;
+        Map<String, Object> map = new HashMap<>();
+        token = jwtTokenProvider.resolveToken(request);
+        userPk = jwtTokenProvider.getUserPk(token);
+        content = (String) resultMap.get("content");
+        type = (String) resultMap.get("type");
+        reply_id = (String) resultMap.get("reply_id");
+        news_id = (String) resultMap.get("news_id");
+        mainService.report(userPk, content, type, reply_id, news_id);
+        map.put("status", HttpStatus.OK);
         return map;
     }
 
