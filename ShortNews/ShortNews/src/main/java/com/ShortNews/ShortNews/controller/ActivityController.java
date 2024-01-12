@@ -24,6 +24,7 @@ public class ActivityController {
         Map<String, Object> map = new HashMap<>();
         String token = jwtTokenProvider.resolveToken(request);
         String id = jwtTokenProvider.getUserPk(token);
+        System.out.println(id);
         map.put("newsLike", activityService.getLikeOrDisLike(id, 1));
         map.put("status", HttpStatus.OK);
         return map;

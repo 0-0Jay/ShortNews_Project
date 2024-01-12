@@ -39,10 +39,10 @@ public interface RecommendRepository extends JpaRepository<Recommend, String> {
     public void onDisLike(@Param("rec_id") String rec_id, @Param("id") String id, @Param("news_id") String news_id);
 
     @Query(value = "SELECT n.news_id, n.cate_id, n.title, n.views, n.imgs," +
-            "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 1) AS good," +
-            "(SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 0) AS bad," +
-            "(SELECT COUNT(*) FROM reply r WHERE r.news_id = n.news_id) AS reply " +
-            "(SELECT COUNT(*) FROM bookmark b WHERE b.news_id = n.news_id and b.id = l.id) AS bookmark " +
+            "  (SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 1) AS good," +
+            "  (SELECT COUNT(*) FROM recommend l WHERE l.news_id = n.news_id AND type = 0) AS bad," +
+            "  (SELECT COUNT(*) FROM reply r WHERE r.news_id = n.news_id) AS reply," +
+            "  (SELECT COUNT(*) FROM bookmark b WHERE b.news_id = n.news_id and b.id = l.id) AS bookmark " +
             "FROM news n " +
             "JOIN recommend l on n.news_id = l.news_id " +
             "WHERE l.id = :id and l.type = :type", nativeQuery = true)
