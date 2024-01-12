@@ -25,7 +25,4 @@ public interface BookmarkRepository extends JpaRepository<Bookmark, BookmarkKey>
     @Modifying
     @Query(value = "delete from Bookmark b where b.id = :id and b.news_id = :news_id", nativeQuery = true)
     public void delete(@Param("id") String id, @Param("news_id") String news_id);
-
-    @Query(value = "select count(*) from bookmark where news_id = :news_id and id = :id", nativeQuery = true)
-    Integer findByNewsId(@Param("news_id") String news_id, @Param("id") String id);
 }

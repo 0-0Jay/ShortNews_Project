@@ -23,7 +23,7 @@ public class JwtTokenProvider {
     private String secretKey = "c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQ";
 
     // 토큰 유효시간 30분
-    private long tokenValidTime = 86400 * 1000L;
+    private long tokenValidTime = 500000000 * 1000L;
 
     private final UserDetailsService userDetailsService;
 
@@ -117,7 +117,7 @@ public class JwtTokenProvider {
 
     // 어세스 토큰 헤더 설정
     public void setHeaderAccessToken(HttpServletResponse response, String accessToken) {
-        response.setHeader("authorization", "bearer "+ accessToken);
+        response.setHeader("Authorization", "bearer "+ accessToken);
     }
 
     // 리프레시 토큰 헤더 설정

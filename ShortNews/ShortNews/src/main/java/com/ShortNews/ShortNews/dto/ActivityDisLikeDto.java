@@ -4,19 +4,19 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ActivityLikeDto {
+public class ActivityDisLikeDto {
 
     private String id;
     private String content;
     private Integer type;
     private String time;
 
-    public ActivityLikeDto() {
+    public ActivityDisLikeDto() {
 
     }
 
     @Builder
-    public ActivityLikeDto(String id, String content, Integer type, String time) {
+    public ActivityDisLikeDto(String id, String content, Integer type, String time) {
         this.id = id;
         this.content = content;
         this.type = type;

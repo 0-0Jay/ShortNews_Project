@@ -25,11 +25,12 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String requestURI = httpRequest.getRequestURI();
-        if (requestURI.equals("/login/password")) {
-            chain.doFilter(request, response);
-            return;
-        }
+//        String requestURI = httpRequest.getRequestURI();
+//
+//        if (requestURI.startsWith("/login/") || requestURI.startsWith("/signup/")) {
+//            chain.doFilter(request, response);
+//            return;
+//        }
         // 헤더에서 JWT와 토큰, 토큰타입.
         String token = jwtTokenProvider.resolveToken((HttpServletRequest) request);
         System.out.println(token);

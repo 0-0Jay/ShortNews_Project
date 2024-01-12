@@ -1,5 +1,7 @@
 package com.ShortNews.ShortNews.controller;
 
+import com.ShortNews.ShortNews.dto.DisLikeDto;
+import com.ShortNews.ShortNews.dto.LikeDto;
 import com.ShortNews.ShortNews.dto.NewsDto;
 import com.ShortNews.ShortNews.entity.Bookmark;
 import com.ShortNews.ShortNews.entity.BookmarkKey;

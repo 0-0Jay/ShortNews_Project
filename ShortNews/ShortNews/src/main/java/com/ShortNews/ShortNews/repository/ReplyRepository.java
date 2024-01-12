@@ -15,6 +15,9 @@ import java.util.List;
 @Repository
 public interface ReplyRepository extends JpaRepository<Reply, String> {
 
+    @Query(value = "select count(*) from Reply where news_id = :news_id")
+    public Integer replyCount(@Param("news_id") String news_id);
+
     @Query(value = "SELECT r.*, (SELECT COUNT(*) FROM recommend a WHERE a.reply_id = r.reply_id and type = 1) as good, (SELECT COUNT(*) FROM recommend a WHERE a.reply_id = r.reply_id and type = 0) as bad " +
             "FROM REPLY r " +
             "WHERE news_id = :news_id " +
@@ -23,7 +26,7 @@ public interface ReplyRepository extends JpaRepository<Reply, String> {
             "ORDER SIBLINGS BY 1", nativeQuery = true)
     public List<ReplyInterface> selectReply(@Param("news_id") String news_id);
 
-    @Query(value = "SELECT n.news_id, n.title, r.content, SUBSTR(r.reply_id, 1, 8) AS time, n.imgs " +
+    @Query(value = "SELECT n.title, r.content, SUBSTR(r.reply_id, 1, 8) AS time " +
             "FROM news n JOIN reply r " +
             "ON n.news_id = r.news_id " +
             "WHERE r.id = :id " +

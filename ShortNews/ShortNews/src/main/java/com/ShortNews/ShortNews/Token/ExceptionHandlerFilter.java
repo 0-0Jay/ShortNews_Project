@@ -36,11 +36,13 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
         } catch (ExpiredJwtException e) {
             //토큰의 유효기간 만료
             log.error("만료된 토큰입니다");
+
             request.setAttribute("exception", "만료");
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
 //            response.getWriter().write("status");
             Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("status", "만료된 토큰");
+            errorResponse.put("status", true);
+            errorResponse.put("message", "만료된 토큰");
             response.getWriter().write(objectMapper.writeValueAsString(errorResponse));
 
         } catch (JwtException | IllegalArgumentException e) {
@@ -50,7 +52,8 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             request.setAttribute("exception", "유효하지않음");
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
             Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("status", "유효하지 않은 토큰");
+            errorResponse.put("status", false);
+            errorResponse.put("message", "유효하지않은 토큰");
             response.getWriter().write(objectMapper.writeValueAsString(errorResponse));
 
         } catch (NoSuchElementException e) {
@@ -60,7 +63,8 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             request.setAttribute("exception", "사용자 x");
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
             Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("status", "사용자 찾을 수 없음");
+            errorResponse.put("status", false);
+            errorResponse.put("message", "사용자를 찾을 수 없음");
             response.getWriter().write(objectMapper.writeValueAsString(errorResponse));
         }
     }

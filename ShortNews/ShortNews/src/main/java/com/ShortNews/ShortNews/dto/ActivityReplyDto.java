@@ -5,18 +5,14 @@ import lombok.Data;
 
 @Data
 public class ActivityReplyDto {
-    private String news_id;
     private String title;
     private String content;
     private String time;
-    private String img;
 
     @Builder
-    public ActivityReplyDto(String news_id, String title, String content, String time, String img) {
-        this.news_id = news_id;
+    public ActivityReplyDto(String title, String content, String time) {
         this.title = title;
         this.content = content;
         this.time = time;
-        this.img = img;
     }
 }

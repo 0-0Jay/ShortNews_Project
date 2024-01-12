@@ -34,7 +34,7 @@ public class LoginController {
     @Autowired
     private JavaCode javaCode;
 
-    @PostMapping("/login/idCheck")
+    @PostMapping("/login/idCheck") // OK
     public Map<String, Object> loginIdCheck(@RequestBody Map<String, Object> resultMap) {
         Map<String, Object> map = new HashMap<>();
         String id = resultMap.get("id").toString();
@@ -50,7 +50,7 @@ public class LoginController {
         return map;
     }
 
-    @PostMapping("/login/password")
+    @PostMapping("/login/password") // OK
     public Map<String, Object> loginPassword(@RequestBody Map<String, Object> resultMap, HttpServletResponse response) throws NoSuchAlgorithmException {
         Map<String, Object> map = new HashMap<>();
         String id = resultMap.get("id").toString();
@@ -77,7 +77,7 @@ public class LoginController {
         return map;
     }
 
-    @PostMapping("/login/findPassword")
+    @PostMapping("/login/findPassword") // OK
     public Map<String, Object> loginFindPassword(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
         String id = resultMap.get("id").toString();
@@ -122,8 +122,7 @@ public class LoginController {
     public Map<String, Object> loginUpdatePassword(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) throws NoSuchAlgorithmException {
         Map<String, Object> map = new HashMap<>();
         String pw = resultMap.get("pw").toString();
-        HttpSession session = request.getSession();
-        String id = session.getAttribute("id").toString();
+        String id = resultMap.get("id").toString();
         loginService.updatePassword(id, pw);
         map.put("status", HttpStatus.OK);
         return map;

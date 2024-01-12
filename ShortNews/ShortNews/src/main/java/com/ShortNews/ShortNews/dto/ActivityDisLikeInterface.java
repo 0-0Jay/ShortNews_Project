@@ -1,6 +1,6 @@
 package com.ShortNews.ShortNews.dto;
 
-public interface ActivityLikeInterface {
+public interface ActivityDisLikeInterface {
 
     String getId();
     String getContent();
