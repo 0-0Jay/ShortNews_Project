@@ -40,9 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors();
         http.httpBasic().disable()
                 .authorizeRequests()// 요청에 대한 사용권한 체크
-                .antMatchers("/test").authenticated()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/main/**").hasRole("USER")
                 .antMatchers("/login/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/login/**").permitAll()
                 .antMatchers("/signup/**").permitAll()
