@@ -30,32 +30,18 @@ public class MainService {
     @Autowired
     private ReplyRepository replyRepository;
 
-    public Map<String, Object> News(String category, String date, String id) {
-        List<News> list = newsRepository.selectNews(category, date);
-        List<Map<String, Object>> all_list = new ArrayList<>();
+    public Map<String, Object> News(String category, String date) {
         Map<String, Object> map = new HashMap<>();
+        List<News> list = newsRepository.selectNews(category,
+                date.substring(0, 4)
+                        + date.substring(6, 8)
+                        + date.substring(10, 12));
+        List<Map<String, Object>> all_list = new ArrayList<>();
+
         for (News news : list) {
             Map<String, Object> news_map = new HashMap<>();
-            BookmarkKey bookmarkKey = BookmarkKey.builder()
-                    .news_id(news.getNews_id())
-                    .id(id).build();
-            Optional<Bookmark> bookmark_list = bookmarkRepository.findById(bookmarkKey);
-            if (bookmark_list.isEmpty()) {
-                news_map.put("bookmark", false);
-            } else {
-                news_map.put("bookmark", true);
-            }
-            List<Recommend> recommend_list = recommendRepository.likeCount(news.getNews_id());
-            List<Recommend> recommend2_list = recommendRepository.dislikeCount(news.getNews_id());
-            int count = replyRepository.replyCount(news.getNews_id());
-
-            news_map.put("news_id", news.getNews_id());     
+            news_map.put("news_id", news.getNews_id());
             news_map.put("title", news.getTitle());
-            news_map.put("views", news.getViews());
-            news_map.put("img", news.getImgs());
-            news_map.put("reply", count);
-            news_map.put("like", recommend_list.size());
-            news_map.put("dislike", recommend2_list.size());
             all_list.add(news_map);
         }
 
@@ -114,42 +100,51 @@ public class MainService {
         return newsDto;
     }
 
-    public boolean like(String id, String news_id, String before, String after) {
-        String time = javaCode.getTime();
-        String str = "select recommend_seq.nextval from dual";
-        Query query = entityManager.createNativeQuery(str);
-        String num = query.getSingleResult().toString();
-        String rec_id = time + num;
-
-        if (before.equals("-1") && after.equals("1")) {
+    public boolean like(String id, String news_id, String type) {
+        if (type.equals("on")) {
+            recommendRepository.offLike(id, news_id);
+            return true;
+        } else if (type.equals("off")) {
+            String time = javaCode.getTime();
+            String str = "select recommend_seq.nextval from dual";
+            Query query = entityManager.createNativeQuery(str);
+            String num = query.getSingleResult().toString();
+            String rec_id = time + num;
             recommendRepository.onLike(rec_id, id, news_id);
-        } else if (before.equals("-1") && after.equals("0")) {
-            recommendRepository.onDisLike(rec_id, id, news_id);
-        } else if (before.equals("1") && after.equals("0") || before.equals("0") && after.equals("1")) {
-            recommendRepository.updateLike(news_id, after);
-        } else if (before.equals("1") && after.equals("1") || before.equals("0") && after.equals("0")) {
-            recommendRepository.deleteLike(news_id, id);
+            return true;
         } else {
             return false;
         }
-        return true;
     }
 
-    public void Bookmark(String id, String news_id, Boolean type) {
-        if (!type) {
-            BookmarkKey bookmarkKey = BookmarkKey.builder()
-                    .id(id)
-                    .news_id(news_id)
-                    .build();
-
-            Bookmark bookmark = Bookmark.builder()
-                    .bookmarkKey(bookmarkKey)
-                    .build();
-
-            bookmarkRepository.save(bookmark);
+    public boolean disLike(String id, String news_id, String type) {
+        if (type.equals("on")) {
+            recommendRepository.offLike(id, news_id);
+            return true;
+        } else if (type.equals("off")) {
+            String time = javaCode.getTime();
+            String str = "select recommend_seq.nextval from dual";
+            Query query = entityManager.createNativeQuery(str);
+            String num = query.getSingleResult().toString();
+            String rec_id = time + num;
+            recommendRepository.onDisLike(rec_id, id, news_id);
+            return true;
         } else {
-            bookmarkRepository.delete(id, news_id);
+            return false;
         }
+    }
+
+    public void insertBookmark(String id, String news_id) {
+        BookmarkKey bookmarkKey = BookmarkKey.builder()
+                                .id(id)
+                                .news_id(news_id)
+                                .build();
+
+        Bookmark bookmark = Bookmark.builder()
+                            .bookmarkKey(bookmarkKey)
+                            .build();
+
+        bookmarkRepository.save(bookmark);
     }
 
     public String selectLink(String news_id) {

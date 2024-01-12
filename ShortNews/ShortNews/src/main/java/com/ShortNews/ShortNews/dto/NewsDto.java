@@ -14,13 +14,14 @@ public class NewsDto {
     private Integer dislike;
     private Integer type;
     private Boolean bookmark;
+    private Integer reply;  // 답글 수
 
     public NewsDto() {
 
     }
 
     @Builder
-    public NewsDto(String title, String content, String imgs, Integer views, Integer like, Integer dislike, Integer type, Boolean bookmark) {
+    public NewsDto(String title, String content, String imgs, Integer views, Integer like, Integer dislike, Integer type, Boolean bookmark, Integer reply) {
         this.title = title;
         this.content = content;
         this.imgs = imgs;
@@ -29,5 +30,6 @@ public class NewsDto {
         this.dislike = dislike;
         this.type = type;
         this.bookmark = bookmark;
+        this.reply = reply;  // 답글 수
     }
 }

@@ -1,7 +1,6 @@
 package com.ShortNews.ShortNews.service;
 
 import com.ShortNews.ShortNews.JavaCode;
-import com.ShortNews.ShortNews.Token.RefreshTokenRepository;
 import com.ShortNews.ShortNews.dto.BookmarkDto;
 import com.ShortNews.ShortNews.dto.BookmarkInterface;
 import com.ShortNews.ShortNews.entity.Member;
@@ -29,8 +28,6 @@ public class MemberService {
     private PreferenceRepository preferenceRepository;
     @Autowired
     private BookmarkRepository bookmarkRepository;
-    @Autowired
-    private RefreshTokenRepository refreshTokenRepository;
     @Autowired
     private JavaCode javaCode;
 
@@ -66,7 +63,6 @@ public class MemberService {
                         .build();
         reasonRepository.save(reason);
         memberRepository.deleteById(id);
-        refreshTokenRepository.deleteById(id);
     }
 
     public void updateCate(String id, List<Boolean> list) {

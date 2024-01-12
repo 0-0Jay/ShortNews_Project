@@ -26,7 +26,6 @@ public class MainController {
 
     @Autowired
     private MainService mainService;
-
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
@@ -35,12 +34,9 @@ public class MainController {
         return "성공";
     }
 
-    @GetMapping("/main/news/{category}/{date}") // OK
-    public Map<String, Object> mainNews(@PathVariable("category") String category, @PathVariable("date") String date, HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<>();
-        String token = jwtTokenProvider.resolveToken(request);
-        String userPk = jwtTokenProvider.getUserPk(token);
-        map = mainService.News(category, date, userPk);
+    @GetMapping("/main/news/{category}/{date}")
+    public Map<String, Object> mainNews(@PathVariable("category") String category, @PathVariable("date") String date) {
+        Map<String, Object> map = mainService.News(category, date);
         map.put("status", HttpStatus.OK);
         return map;
     }
@@ -52,24 +48,21 @@ public class MainController {
         return map;
     }
 
-    @GetMapping("/main/selectNews/{news_id}") // OK
+    @GetMapping("/main/selectNews/{news_id}")
     public NewsDto mainSelectNews(@PathVariable("news_id") String news_id, HttpServletRequest request) {
-        String token = jwtTokenProvider.resolveToken(request);
-        String userPk = jwtTokenProvider.getUserPk(token);
-        return mainService.selectNews(userPk, news_id);
+        HttpSession session = request.getSession();
+        String id = session.getAttribute("id").toString();
+        return mainService.selectNews(id, news_id);
     }
 
-    @PatchMapping("/main/like") // OK
+    @PatchMapping("/main/like")
     public Map<String, Object> mainLike(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
-        String news_id, before, after, token, userPk;
         Map<String, Object> map = new HashMap<>();
-        token = jwtTokenProvider.resolveToken(request);
-        userPk = jwtTokenProvider.getUserPk(token);
-        news_id = resultMap.get("news_id").toString();
-        before = resultMap.get("before").toString();
-        after = resultMap.get("after").toString();
-
-        if (mainService.like(userPk, news_id, before, after)) {
+        HttpSession session = request.getSession();
+        String id = session.getAttribute("id").toString();
+        String news_id = resultMap.get("news_id").toString();
+        String type = resultMap.get("type").toString();
+        if (mainService.like(id, news_id, type)) {
             map.put("status", HttpStatus.OK);
         } else {
             map.put("status", HttpStatus.BAD_REQUEST);
@@ -77,20 +70,33 @@ public class MainController {
         return map;
     }
 
-    @PatchMapping("/main/bookmark") // OK
-    public Map<String, Object> mainBookmark(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
-        String token, userPk;
+    @PatchMapping("/main/dislike")
+    public Map<String, Object> mainDisLike(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
-        token = jwtTokenProvider.resolveToken(request);
-        userPk = jwtTokenProvider.getUserPk(token);
+        HttpSession session = request.getSession();
+        String id = session.getAttribute("id").toString();
         String news_id = resultMap.get("news_id").toString();
-        Boolean type = (Boolean) resultMap.get("type");
-        mainService.Bookmark(userPk, news_id, type);
+        String type = resultMap.get("type").toString();
+        if (mainService.disLike(id, news_id, type)) {
+            map.put("status", HttpStatus.OK);
+        } else {
+            map.put("status", HttpStatus.BAD_REQUEST);
+        }
+        return map;
+    }
+
+    @PatchMapping("/main/bookmark")
+    public Map<String, Object> mainBookmark(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<>();
+        HttpSession session = request.getSession();
+        String id = session.getAttribute("id").toString();
+        String news_id = resultMap.get("news_id").toString();
+        mainService.insertBookmark(id, news_id);
         map.put("status", HttpStatus.OK);
         return map;
     }
 
-    @GetMapping("/main/link/{news_id}") // OK
+    @GetMapping("/main/link/{news_id}")
     public Map<String, Object> mainLink(@PathVariable("news_id") String news_id) {
         Map<String, Object> map = new HashMap<>();
         String result = mainService.selectLink(news_id);
@@ -116,11 +122,12 @@ public class MainController {
     @PatchMapping("/main/write")
     public Map<String, Object> mainWrite(@RequestBody Map<String, Object> resultMap, HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
-        HttpSession session = request.getSession();
+        String token = jwtTokenProvider.resolveToken(request);
+        String id = jwtTokenProvider.getUserPk(token);
         String upper_id = (String) resultMap.get("upper_id");
         ReplyDto rp = new ReplyDto(
                 resultMap.get("news_id").toString(),
-                session.getAttribute("id").toString(),
+                id,
                 resultMap.get("reply").toString(),
                 upper_id
         );

@@ -1,5 +1,7 @@
 package com.ShortNews.ShortNews.repository;
 
+import com.ShortNews.ShortNews.dto.ActivityLikeDto;
+import com.ShortNews.ShortNews.dto.ActivityLikeInterface;
 import com.ShortNews.ShortNews.entity.News;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -26,4 +28,6 @@ public interface NewsRepository extends JpaRepository<News, String> {
     @Transactional
     @Query(value = "update News n set n.views = n.views + 1 where news_id = :news_id")
     public void updateViews(@Param("news_id") String news_id);
+
+
 }
