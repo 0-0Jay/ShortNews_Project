@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ActivityLikeDto {
+public class ActivityNewsDto {
 
     private String news_id;
     private String cate_id;
@@ -17,7 +17,7 @@ public class ActivityLikeDto {
     private String img;
 
     @Builder
-    public ActivityLikeDto(String news_id, String cate_id, String title, Integer views, Integer bookmark, Integer like, Integer dislike, Integer reply, String img) {
+    public ActivityNewsDto(String news_id, String cate_id, String title, Integer views, Integer bookmark, Integer like, Integer dislike, Integer reply, String img) {
         this.news_id = news_id;
         this.cate_id = cate_id;
         this.title = title;

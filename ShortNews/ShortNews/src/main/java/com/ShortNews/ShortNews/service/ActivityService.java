@@ -18,12 +18,12 @@ public class ActivityService {
     @Autowired
     private ReplyRepository replyRepository;
 
-    public List<ActivityLikeDto> getLikeOrDisLike(String id, int type) {
+    public List<ActivityNewsDto> getLikeOrDisLike(String id, int type) {
         System.out.println(id);
-        List<ActivityLikeDto> list = new ArrayList<>();
-        List<ActivityLikeInterface> like_list = recommendRepository.selectLikeNews(id, type);
-        for (ActivityLikeInterface activityLike : like_list) {
-            ActivityLikeDto activityLikeDto = ActivityLikeDto.builder()
+        List<ActivityNewsDto> list = new ArrayList<>();
+        List<ActivityNewsInterface> like_list = recommendRepository.selectLikeNews(id, type);
+        for (ActivityNewsInterface activityLike : like_list) {
+            ActivityNewsDto activityLikeDto = ActivityNewsDto.builder()
                     .news_id(activityLike.getNews_id())
                     .cate_id(activityLike.getCate_id())
                     .views(activityLike.getViews())

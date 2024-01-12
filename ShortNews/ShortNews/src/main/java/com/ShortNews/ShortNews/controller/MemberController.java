@@ -107,13 +107,14 @@ public class MemberController {
 
     @GetMapping("/member/bookmark")
     public Map<String, Object> memberBookmark(HttpServletRequest request) {
+        String token, userPk;
         Map<String, Object> map = new HashMap<>();
-        HttpSession session = request.getSession();
-        String id = (String) session.getAttribute("id");
-        if (id == null) {
+        token = jwtTokenProvider.resolveToken(request);
+        userPk = jwtTokenProvider.getUserPk(token);
+        if (userPk == null) {
             map.put("status", HttpStatus.BAD_REQUEST);
         } else {
-            map = memberService.bookmark(id);
+            map.put("bookmark", memberService.bookmark(userPk));
             map.put("status", HttpStatus.OK);
         }
         return map;

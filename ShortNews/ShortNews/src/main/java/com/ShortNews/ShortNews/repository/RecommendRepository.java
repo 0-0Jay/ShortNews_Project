@@ -1,6 +1,6 @@
 package com.ShortNews.ShortNews.repository;
 
-import com.ShortNews.ShortNews.dto.ActivityLikeInterface;
+import com.ShortNews.ShortNews.dto.ActivityNewsInterface;
 import com.ShortNews.ShortNews.entity.Recommend;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -35,7 +35,7 @@ public interface RecommendRepository extends JpaRepository<Recommend, String> {
         "FROM news n " +
         "JOIN recommend l on n.news_id = l.news_id " +
         "WHERE l.id = :id and l.type = :type", nativeQuery = true)
-    List<ActivityLikeInterface> selectLikeNews(@Param("id") String id, @Param("type") Integer type);
+    List<ActivityNewsInterface> selectLikeNews(@Param("id") String id, @Param("type") Integer type);
 
 
     @Query(value = "insert into Recommend values(:rec_id, :id, null, :news_id, 1)", nativeQuery = true)
