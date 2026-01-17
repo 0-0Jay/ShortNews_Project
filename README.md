@@ -1,9 +1,9 @@
 <h1 align="center">뉴스 요약 프로젝트 ShortNews</h1>
 <p align="center">
-  <img src="https://img.shields.io/badge/Frontend-React-42b883?logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/Backend-Spring-339933?logo=spring&logoColor=white" />
-  <img src="https://img.shields.io/badge/Database-ORACLE-003545?logo=oracle&logoColor=white" />
-  <img src="https://img.shields.io/badge/Deploy-AmazonAWS-03C75A?logo=amazon&logoColor=white" />
+  <img src="https://img.shields.io/badge/Frontend-React-61DAFB?logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Backend-Spring-6DB33F?logo=spring&logoColor=white" />
+  <img src="https://img.shields.io/badge/Database-ORACLE-F80000?logo=oracle&logoColor=white" />
+  <img src="https://img.shields.io/badge/Deploy-Amazon AWS-232F3E?logo=amazonaws&logoColor=white" />
 </p>
 
 ---
