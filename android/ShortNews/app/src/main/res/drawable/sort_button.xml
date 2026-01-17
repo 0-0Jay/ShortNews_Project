@@ -1,0 +1,24 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 선택되었을 때 -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#000000" />
+            <corners android:radius="8dp" /> <!-- 테두리의 모서리를 둥글게 -->
+            <stroke
+                android:width="0.7dp"
+                android:color="@android:color/black" />
+        </shape>
+        <color android:color="#e5e5e5" /> <!-- 선택되었을 때의 텍스트 색 -->
+    </item>
+    <!-- 선택되지 않았을 때 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#e5e5e5" />
+            <corners android:radius="8dp" /> <!-- 테두리의 모서리를 둥글게 -->
+            <stroke
+                android:width="0.7dp"
+                android:color="#e5e5e5" />
+        </shape>
+        <color android:color="#000000" /> <!-- 선택되지 않았을 때의 텍스트 색 -->
+    </item>
+</selector>

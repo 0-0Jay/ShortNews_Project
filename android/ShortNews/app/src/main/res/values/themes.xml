@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ShortNews" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Status bar color. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#57AEFF</item>
+        <item name="android:background">@color/white</item>     <!-- 기본 배경색 지정 -->
+        <item name="android:fontFamily">@font/nanumsquareotf_acb</item>         <!-- 기본 폰트 지정 -->
+    </style>
+
+    <style name="Theme.ShortNews" parent="Base.Theme.ShortNews" />
+
+    <style name="Theme.ShortNews.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ShortNews.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ShortNews.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

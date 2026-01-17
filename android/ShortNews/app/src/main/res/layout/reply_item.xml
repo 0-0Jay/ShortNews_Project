@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="340dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+
+        android:backgroundTint="@color/white"
+        android:padding="5dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/threeDotsCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:visibility="visible"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:layout_constraintEnd_toEndOf="@+id/dislikeCount"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.widget.Button
+                    android:id="@+id/replyDeleteButton"
+                    android:layout_width="85dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_border_none"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="삭제"
+                    android:textColor="#FF0000"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <android.widget.Button
+                    android:id="@+id/replyUpdateButton"
+                    android:layout_width="85dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_border_none"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="수정"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <android.widget.Button
+                    android:id="@+id/replyReportButton"
+                    android:layout_width="85dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/button_border_none"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="신고하기"
+                    android:textColor="#FF0000"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/replyProfile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="239dp"
+            android:src="@drawable/profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/replyNickname"
+            android:layout_width="167dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="43dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="닉네임"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/replyProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/replyProfile"
+            app:layout_constraintTop_toTopOf="@+id/replyProfile"
+            app:layout_constraintVertical_bias="0.06999999" />
+
+        <TextView
+            android:id="@+id/replyDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="244dp"
+            android:layout_marginBottom="5dp"
+            android:text="2024.02.24 19:11"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/replyNickname"
+            app:layout_constraintTop_toBottomOf="@+id/replyNickname"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/replyContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:paddingBottom="5dp"
+            android:text="댓글 내용"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/replyProfile"
+            app:layout_constraintTop_toBottomOf="@+id/replyDate"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/replyUpdated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(수정됨)"
+            android:textColor="#959595"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/replyContent"
+            app:layout_constraintTop_toBottomOf="@+id/replyContent"
+            tools:ignore="TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/like"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/replyProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/replyNickname"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/default_like"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/like"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toTopOf="@+id/like" />
+
+        <ImageView
+            android:id="@+id/dislike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/like"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toEndOf="@+id/likeCount"
+            app:layout_constraintTop_toTopOf="@+id/like"
+            app:srcCompat="@drawable/default_dislike"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/dislikeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/dislike"
+            app:layout_constraintStart_toEndOf="@+id/dislike"
+            app:layout_constraintTop_toTopOf="@+id/dislike" />
+
+        <ImageView
+            android:id="@+id/threeDots"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dislikeCount"
+            app:layout_constraintStart_toEndOf="@+id/dislikeCount"
+            app:layout_constraintTop_toTopOf="@+id/dislikeCount"
+            app:srcCompat="@drawable/ellipsis_vertical" />
+
+        <TextView
+            android:id="@+id/reReplyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="답글"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/replyContent"
+            app:layout_constraintTop_toBottomOf="@+id/replyUpdated"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/reReplyCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="(0)"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reReplyTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/reReplyTitle"
+            app:layout_constraintTop_toTopOf="@+id/reReplyTitle" />
+
+        <EditText
+            android:id="@+id/commentWrite"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:hint="댓글을 작성해주세요"
+            android:inputType="text"
+            android:maxLength="300"
+            android:padding="8dp"
+            android:paddingEnd="65dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reReplyTitle"
+            tools:ignore="TouchTargetSizeCheck,DuplicateClickableBoundsCheck" />
+
+        <android.widget.Button
+            android:id="@+id/commentWriteButton"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:background="@drawable/comment_write_button"
+            android:backgroundTint="#FFFFFF"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="0dp"
+            android:text="등록"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/commentWrite"
+            app:layout_constraintEnd_toEndOf="@+id/commentWrite"
+            app:layout_constraintHorizontal_bias="0.99"
+            app:layout_constraintStart_toStartOf="@+id/commentWrite"
+            app:layout_constraintTop_toTopOf="@+id/commentWrite"
+            tools:ignore="TouchTargetSizeCheck,DuplicateClickableBoundsCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/commentWrite"
+            app:layout_constraintTop_toBottomOf="@id/commentWrite" />
+
+        <View
+            android:id="@+id/horizontal_line1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/replyUpdateText"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:hint="댓글을 작성해주세요"
+            android:inputType="text"
+            android:maxLength="300"
+            android:padding="8dp"
+            android:paddingEnd="65dp"
+            android:textSize="14sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/replyDate"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <android.widget.Button
+            android:id="@+id/replyUpdateTextButton"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:background="@drawable/comment_write_button"
+            android:backgroundTint="#FFFFFF"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="0dp"
+            android:text="수정"
+            android:textSize="14sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/replyUpdateText"
+            app:layout_constraintEnd_toEndOf="@+id/replyUpdateText"
+            app:layout_constraintHorizontal_bias="0.99"
+            app:layout_constraintStart_toStartOf="@+id/replyUpdateText"
+            app:layout_constraintTop_toTopOf="@+id/replyUpdateText"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/replyBlindView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/reReplyTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.03"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.3"
+                    app:srcCompat="@drawable/notice" />
+
+                <TextView
+                    android:id="@+id/replyBlindText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="다수의 신고가 접수되어 가려진 댓글입니다."
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="댓글을 누르면 내용을 확인할 수 있습니다."
+                    app:layout_constraintEnd_toEndOf="@+id/replyBlindText"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/replyBlindText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

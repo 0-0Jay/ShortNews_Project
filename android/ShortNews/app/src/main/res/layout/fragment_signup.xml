@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.member.LoginFragment">
+
+    <android.widget.Button
+        android:id="@+id/resend"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:alpha="0.5"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:enabled="false"
+        android:padding="0dp"
+        android:text="재전송"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/codeAlert"
+        app:layout_constraintStart_toStartOf="@+id/codeBtn"
+        app:layout_constraintTop_toTopOf="@+id/codeAlert"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/codeAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="인증번호를 입력해주세요."
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/code"
+        app:layout_constraintTop_toBottomOf="@+id/code" />
+
+    <android.widget.Button
+        android:id="@+id/codeBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:padding="0dp"
+        android:text="인증"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@+id/code"
+        app:layout_constraintTop_toTopOf="@+id/code" />
+
+    <TextView
+        android:id="@+id/nicknameAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="미입력시 아이디가 닉네임으로 생성됩니다."
+        android:textSize="12sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/signupNickname"
+        app:layout_constraintTop_toBottomOf="@+id/signupNickname" />
+
+    <TextView
+        android:id="@+id/phoneAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="전화번호를 입력해주세요."
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/signupPhone"
+        app:layout_constraintTop_toBottomOf="@+id/signupPhone" />
+
+    <TextView
+        android:id="@+id/pwAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="비밀번호와 일치하지 않습니다."
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/signupPwCheck"
+        app:layout_constraintTop_toBottomOf="@+id/signupPwCheck" />
+
+    <android.widget.Button
+        android:id="@+id/signupBtn"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/signupNickname"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/signupNickname"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameAlert" />
+
+    <android.widget.Button
+        android:id="@+id/sendCodeBtn"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:padding="0dp"
+        android:text="코드 전송"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@+id/signupPhone"
+        app:layout_constraintTop_toTopOf="@+id/signupPhone" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/signupId"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="아이디"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/signupPw"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/signupId"
+        app:layout_constraintStart_toStartOf="@+id/signupId"
+        app:layout_constraintTop_toBottomOf="@+id/signupId" />
+
+    <EditText
+        android:id="@+id/signupPwCheck"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/signupPw"
+        app:layout_constraintStart_toStartOf="@+id/signupPw"
+        app:layout_constraintTop_toBottomOf="@+id/signupPw" />
+
+    <EditText
+        android:id="@+id/signupPhone"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="전화번호"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/signupPwCheck"
+        app:layout_constraintStart_toStartOf="@+id/signupPwCheck"
+        app:layout_constraintTop_toBottomOf="@+id/signupPwCheck" />
+
+    <EditText
+        android:id="@+id/code"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="인증 코드"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/phoneAlert"
+        app:layout_constraintTop_toBottomOf="@+id/phoneAlert" />
+
+    <TextView
+        android:id="@+id/idAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="사용가능한 아이디입니다."
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/signupId"
+        app:layout_constraintTop_toBottomOf="@+id/signupId" />
+
+    <TextView
+        android:id="@+id/codeTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="04 : 33 내에 인증해주세요"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/code"
+        app:layout_constraintTop_toBottomOf="@+id/code" />
+
+    <android.widget.Button
+        android:id="@+id/idCheckBtn"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:padding="0dp"
+        android:text="중복 확인"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@+id/signupId"
+        app:layout_constraintTop_toTopOf="@+id/signupId" />
+
+    <EditText
+        android:id="@+id/signupNickname"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="닉네임"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/signupPhone"
+        app:layout_constraintStart_toStartOf="@+id/signupPhone"
+        app:layout_constraintTop_toBottomOf="@+id/signupPhone" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

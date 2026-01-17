@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="8dp"
+    tools:ignore="SpeakableTextPresentCheck">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <android.widget.Button
+            android:id="@+id/resend"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:alpha="0.5"
+            android:background="@drawable/button_black"
+            android:backgroundTint="#353535"
+            android:enabled="false"
+            android:padding="0dp"
+            android:text="재전송"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/codeTimer"
+            app:layout_constraintStart_toStartOf="@+id/changePhoneCodeBtn"
+            app:layout_constraintTop_toTopOf="@+id/codeTimer"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/codeAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="인증번호가 틀렸습니다."
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/code"
+            app:layout_constraintTop_toBottomOf="@+id/codeTimer" />
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/outline"
+            android:hint="인증 번호"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/changePhoneCodeBtn"
+            app:layout_constraintStart_toStartOf="@+id/changePhoneText"
+            app:layout_constraintTop_toTopOf="@+id/changePhoneCodeBtn"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <android.widget.Button
+            android:id="@+id/sendCodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/button_white"
+            android:text="인증 요청"
+            app:layout_constraintBottom_toBottomOf="@+id/changePhoneText"
+            app:layout_constraintEnd_toEndOf="@+id/changePhoneText"
+            app:layout_constraintTop_toTopOf="@+id/changePhoneText"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/changePhoneText"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/outline"
+            android:hint="전화번호"
+            android:inputType="phone"
+            android:paddingLeft="8dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/close"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/phoneAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="전화번호를 입력해 주세요."
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/changePhoneText"
+            app:layout_constraintTop_toBottomOf="@+id/changePhoneText" />
+
+        <android.widget.Button
+            android:id="@+id/changePhoneCodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_black"
+            android:text="인증"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/changePhoneText"
+            app:layout_constraintTop_toBottomOf="@+id/phoneAlert"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/codeTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="04 : 33 내에 인증해주세요"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/code"
+            app:layout_constraintTop_toBottomOf="@+id/code" />
+
+        <android.widget.Button
+            android:id="@+id/commitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_white"
+            android:text="변경"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/changePhoneCodeBtn"
+            app:layout_constraintTop_toBottomOf="@+id/codeAlert"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sendCodeBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/close"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 창</title>
+</head>
+<body>
+    <h1>로그인 화면</h1>
+    <form action = "/login/password" method = "post">
+        <p>이메일 <input type="email" name="email"></p>
+        <p><input type="submit" value="로그인"></p>
+    </form>
+    <form action = "/create" method="post">
+        <p><input type="submit" value="회원가입하기"></p>
+    </form>
+    <p>구글</p>
+    <p><a href="https://nid.naver.com/oauth2.0/authorize?client_id=sj_6_nYmN3OOAG4Ahwpi&redirect_uri=http://localhost:8090/login/oauth2/code/naver&response_type=code">
+        <input type="button" value="네이버 로그인">
+    </a>
+    <p><a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=8a2ff1aebc8f8febeb2c9a8a578f5c14&redirect_uri=http://localhost:8090/login/oauth2/code/kakao" method="get">
+        <input type="submit" value="카카오 로그인">
+    </a>
+</body>
+</html>

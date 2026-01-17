@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="340dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:id="@+id/reportView"
+        android:layout_width="340dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/reportTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="신고 사유를 알려주세요"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/reportCheck1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="허위 사실 유포" />
+
+        <CheckBox
+            android:id="@+id/reportCheck2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="스팸/도배성 게시글" />
+
+        <CheckBox
+            android:id="@+id/reportCheck3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="음란성 게시글" />
+
+        <CheckBox
+            android:id="@+id/reportCheck4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="욕설/혐오/차별성 게시글" />
+
+        <CheckBox
+            android:id="@+id/reportCheck5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="개인정보 노출" />
+
+        <CheckBox
+            android:id="@+id/reportCheck6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기타 사유" />
+
+        <EditText
+            android:id="@+id/reportWrite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="기타 사유를 입력해주세요."
+            android:maxLength="50"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <android.widget.Button
+            android:id="@+id/reportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_sky"
+            android:text="신고하기"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <android.widget.Button
+            android:id="@+id/reportCancleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gray"
+            android:text="취소"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

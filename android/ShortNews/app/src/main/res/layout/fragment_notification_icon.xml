@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notification"
+    android:layout_width="5dp"
+    android:layout_height="5dp"
+    android:background="@drawable/redcircle_notification"
+    android:visibility="invisible"
+    tools:context=".ui.NotificationIconFragment" />
+
+
+<!--<FrameLayout-->
+<!--android:id="@+id/notification"-->
+<!--android:layout_width="5dp"-->
+
+<!--android:layout_height="5dp"-->
+<!--android:background="@drawable/redcircle_notification"-->
+<!--android:visibility="invisible"-->
+<!--app:layout_constraintBottom_toBottomOf="@+id/bell"-->
+<!--app:layout_constraintEnd_toEndOf="@+id/bell"-->
+<!--app:layout_constraintHorizontal_bias="1.0"-->
+<!--app:layout_constraintStart_toStartOf="@+id/bell"-->
+<!--app:layout_constraintTop_toTopOf="@+id/bell"-->
+<!--app:layout_constraintVertical_bias="0.0">-->
+<!--</FrameLayout>-->

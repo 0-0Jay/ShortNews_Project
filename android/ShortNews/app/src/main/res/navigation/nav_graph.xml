@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.shortnews.ui.member.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_findIdFragment"
+            app:destination="@id/findIdFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_findPwFragment"
+            app:destination="@id/findPwFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_newsMainFragment"
+            app:destination="@id/newsMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.shortnews.ui.member.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_signupDialogFragment"
+            app:destination="@id/signupDialogFragment" />
+        <action
+            android:id="@+id/action_signupFragment_to_newsMainFragment"
+            app:destination="@id/newsMainFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/signupDialogFragment"
+        android:name="com.example.shortnews.ui.member.SignupDialogFragment"
+        android:label="fragment_signup_dialog"
+        tools:layout="@layout/fragment_signup_dialog" />
+
+    <fragment
+        android:id="@+id/findIdFragment"
+        android:name="com.example.shortnews.ui.member.FindIdFragment"
+        android:label="fragment_find_id"
+        tools:layout="@layout/fragment_find_id" >
+        <action
+            android:id="@+id/action_findIdFragment_to_findIdSuccessFragment"
+            app:destination="@id/findIdSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findIdSuccessFragment"
+        android:name="com.example.shortnews.ui.member.FindIdSuccessFragment"
+        android:label="fragment_find_id_success"
+        tools:layout="@layout/fragment_find_id_success" >
+        <action
+            android:id="@+id/action_findIdSuccessFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_findIdSuccessFragment_to_findPwFragment"
+            app:destination="@id/findPwFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findPwFragment"
+        android:name="com.example.shortnews.ui.member.FindPwFragment"
+        android:label="FindPwFragment"
+        tools:layout="@layout/fragment_find_pw" >
+        <action
+            android:id="@+id/action_findPwFragment_to_changePwFragment"
+            app:destination="@id/changePwFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePwFragment"
+        android:name="com.example.shortnews.ui.member.ChangePwFragment"
+        android:label="ChangePwFragment"
+        tools:layout="@layout/fragment_change_pw">
+        <action
+            android:id="@+id/action_changePwFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsMainFragment"
+        android:name="com.example.shortnews.ui.news.NewsMainFragment"
+        android:label="fragment_news_main"
+        tools:layout="@layout/fragment_news_main" >
+        <action
+            android:id="@+id/action_newsMainFragment_to_newsContentFragment"
+            app:destination="@id/newsContentFragment" />
+        <action
+            android:id="@+id/action_newsMainFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsContentFragment"
+        android:name="com.example.shortnews.ui.news.NewsContentFragment"
+        android:label="fragment_news_content"
+        tools:layout="@layout/fragment_news_content" >
+        <action
+            android:id="@+id/action_newsContentFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+        <action
+            android:id="@+id/action_newsContentFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_newsContentFragment_to_newsMainFragment"
+            app:destination="@id/newsMainFragment" />
+        <action
+            android:id="@+id/action_newsContentFragment_self"
+            app:destination="@id/newsContentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.example.shortnews.ui.member.MyPageFragment"
+        android:label="MyPageFragment"
+        tools:layout="@layout/fragment_my_page" >
+        <action
+            android:id="@+id/action_myPageFragment_to_newsMainFragment"
+            app:destination="@id/newsMainFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_bookmarkFragment"
+            app:destination="@id/bookmarkFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_deleteMemberFragment"
+            app:destination="@id/deleteMemberFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_newsContentFragment"
+            app:destination="@id/newsContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.shortnews.ui.news.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" />
+
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.example.shortnews.ui.news.BookmarkFragment"
+        android:label="BookmarkFragment"
+        tools:layout="@layout/fragment_bookmark">
+        <action
+            android:id="@+id/action_bookmarkFragment_to_newsMainFragment"
+            app:destination="@id/newsMainFragment" />
+        <action
+            android:id="@+id/action_bookmarkFragment_to_newsContentFragment"
+            app:destination="@id/newsContentFragment" />
+        <action
+            android:id="@+id/action_bookmarkFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deleteMemberFragment"
+        android:name="com.example.shortnews.ui.member.DeleteMemberFragment"
+        android:label="DeleteMemberFragment"
+        tools:layout="@layout/fragment_delete_member"
+        >
+        <action
+            android:id="@+id/action_deleteMemberFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+
+</navigation>

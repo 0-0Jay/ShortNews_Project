@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.member.FindIdFragment">
+
+    <android.widget.Button
+        android:id="@+id/resend"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:alpha="0.5"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:enabled="false"
+        android:padding="0dp"
+        android:text="재전송"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/findIdCodeTimer"
+        app:layout_constraintStart_toStartOf="@+id/findIdCodeBtn"
+        app:layout_constraintTop_toTopOf="@+id/findIdCodeTimer"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/findIdCodeTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="04 : 33 내에 인증해주세요"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/findIdCode"
+        app:layout_constraintTop_toBottomOf="@+id/findIdCode" />
+
+    <android.widget.Button
+        android:id="@+id/findIdCodeBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:padding="0dp"
+        android:text="인증"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/findIdPhone"
+        app:layout_constraintTop_toTopOf="@+id/findIdCode" />
+
+    <EditText
+        android:id="@+id/findIdCode"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="인증 코드"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/findIdPhone"
+        app:layout_constraintTop_toBottomOf="@+id/findIdPhoneAlert" />
+
+    <android.widget.Button
+        android:id="@+id/findIdBtn"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.5"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:enabled="false"
+        android:text="아이디 찾기"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/findIdPhone"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="@+id/findIdPhone"
+        app:layout_constraintTop_toBottomOf="@+id/findIdPhone" />
+
+    <TextView
+        android:id="@+id/findIdPhoneAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="전화번호를 입력해주세요."
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/findIdPhone"
+        app:layout_constraintTop_toBottomOf="@+id/findIdPhone"
+        tools:ignore="TextContrastCheck" />
+
+    <android.widget.Button
+        android:id="@+id/findIdSendCodeBtn"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/button_black"
+        android:backgroundTint="#353535"
+        android:padding="0dp"
+        android:text="코드 전송"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@+id/findIdPhone"
+        app:layout_constraintTop_toTopOf="@+id/findIdPhone" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/findIdPhone"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="전화번호"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="아이디를 잊어버리셨나요?"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/findIdPhone"
+        app:layout_constraintStart_toStartOf="@+id/findIdPhone" />
+
+    <TextView
+        android:id="@+id/findIdCodeAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="인증코드가 일치하지 않습니다."
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/findIdCodeTimer"
+        app:layout_constraintTop_toBottomOf="@+id/findIdCodeTimer"
+        tools:ignore="TextContrastCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

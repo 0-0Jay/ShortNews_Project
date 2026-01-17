@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 선택되지 않은 상태 -->
+    <item android:state_pressed="false">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="#FFFFFF" /> <!-- 기본 배경색 -->
+            <corners android:radius="8dp" /> <!-- 테두리의 모서리를 둥글게 -->
+            <stroke
+                android:width="0.7dp"
+                android:color="@android:color/black" />
+            <corners android:radius="8dp" /> <!-- 테두리의 둥근 정도 -->
+        </shape>
+    </item>
+    <!-- 마우스를 올린 상태 -->
+    <item android:state_pressed="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="#57AEFF" /> <!-- 마우스를 올렸을 때 배경색 -->
+            <corners android:radius="8dp" /> <!-- 테두리의 모서리를 둥글게 -->
+            <stroke
+                android:width="0.7dp"
+                android:color="#57AEFF" />
+            <corners android:radius="8dp" /> <!-- 테두리의 둥근 정도 -->
+        </shape>
+    </item>
+</selector>

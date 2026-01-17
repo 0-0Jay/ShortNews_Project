@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 버튼이 눌렸을 때 -->
+<!--    <item android:state_pressed="true">-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <solid android:color="#BBDEFF" /> &lt;!&ndash; 눌렸을 때 배경색 &ndash;&gt;-->
+<!--        </shape>-->
+<!--    </item>-->
+
+    <!-- 버튼이 선택되었을 때 -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#57AEFF" /> <!-- 선택되었을 때 배경색 -->
+        </shape>
+        <color android:color="#FFFFFF" /> <!-- 선택되었을 때 글씨색 -->
+    </item>
+
+    <!-- 기본 상태 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" /> <!-- 기본 배경색 -->
+        </shape>
+    </item>
+
+</selector>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newsItemLayout"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/newsImg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/profile_img" />
+
+        <TextView
+            android:id="@+id/newsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/white"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="제목"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/newsImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/like"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/newsImg"
+            app:layout_constraintStart_toStartOf="@+id/newsTitle"
+            app:srcCompat="@drawable/like" />
+
+        <ImageView
+            android:id="@+id/dislike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/likeCount"
+            app:layout_constraintTop_toTopOf="@+id/like"
+            app:srcCompat="@drawable/dislike" />
+
+        <ImageView
+            android:id="@+id/reply"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/dislikeCount"
+            app:layout_constraintTop_toTopOf="@+id/dislike"
+            app:srcCompat="@drawable/reply" />
+
+        <ImageView
+            android:id="@+id/views"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/replyCount"
+            app:layout_constraintTop_toTopOf="@+id/reply"
+            app:srcCompat="@drawable/views" />
+
+        <TextView
+            android:id="@+id/likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/like"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toTopOf="@+id/like" />
+
+        <TextView
+            android:id="@+id/dislikeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/dislike"
+            app:layout_constraintStart_toEndOf="@+id/dislike"
+            app:layout_constraintTop_toTopOf="@+id/dislike" />
+
+        <TextView
+            android:id="@+id/replyCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/reply"
+            app:layout_constraintStart_toEndOf="@+id/reply"
+            app:layout_constraintTop_toTopOf="@+id/reply" />
+
+        <TextView
+            android:id="@+id/viewsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/white"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/views"
+            app:layout_constraintStart_toEndOf="@+id/views"
+            app:layout_constraintTop_toTopOf="@+id/views" />
+
+        <ImageView
+            android:id="@+id/bookmarkBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/views"
+            app:layout_constraintEnd_toEndOf="@+id/newsTitle"
+            app:srcCompat="@drawable/bookmark_no"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/newsBlindCardView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.31"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/notice" />
+
+                <TextView
+                    android:id="@+id/newsBlindText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="숨겨진 기사입니다."
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="다수의 신고가 접수되어 일시적으로 숨겨진 기사입니다.\n클릭하면 기사를 확인할 수 있습니다."
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/newsBlindText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
+

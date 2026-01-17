@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.member.LoginFragment">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/loginId"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="아이디"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/loginPw"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:paddingLeft="8dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/loginId"
+        app:layout_constraintStart_toStartOf="@+id/loginId"
+        app:layout_constraintTop_toBottomOf="@+id/loginId" />
+
+    <android.widget.Button
+        android:id="@+id/findIdBtn"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_sky"
+        android:backgroundTint="#57AEFF"
+        android:padding="5dp"
+        android:text="아이디 찾기"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="@+id/signupBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signupBtn" />
+
+    <android.widget.Button
+        android:id="@+id/findPwBtn"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_sky"
+        android:backgroundTint="#57AEFF"
+        android:padding="0dp"
+        android:text="비밀번호 찾기"
+
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/signupBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signupBtn" />
+
+    <android.widget.Button
+        android:id="@+id/loginBtn"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_sky"
+        android:backgroundTint="@color/login_button"
+        android:text="로그인"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/loginPw"
+        app:layout_constraintStart_toStartOf="@+id/loginPw"
+        app:layout_constraintTop_toBottomOf="@+id/loginPw" />
+
+    <android.widget.Button
+        android:id="@+id/signupBtn"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_sky"
+        android:backgroundTint="@color/login_button"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <ImageButton
+        android:id="@+id/googleLoginBtn"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_google"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/naverLoginBtn"
+        app:layout_constraintStart_toStartOf="@+id/naverLoginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/naverLoginBtn"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/kakaoLoginBtn"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_kakao"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/naverLoginBtn"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_naver"
+        app:layout_constraintEnd_toEndOf="@+id/kakaoLoginBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/kakaoLoginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/kakaoLoginBtn"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/or"
+        app:layout_constraintEnd_toEndOf="@+id/findPwBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/findIdBtn"
+        app:layout_constraintTop_toBottomOf="@+id/findIdBtn" />
+
+    <TextView
+        android:id="@+id/loginAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="일치하는 회원정보가 없습니다."
+        android:textColor="#FF0000"
+        android:textSize="10sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/loginId"
+        app:layout_constraintEnd_toEndOf="@+id/loginId"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginId"
+        tools:ignore="TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

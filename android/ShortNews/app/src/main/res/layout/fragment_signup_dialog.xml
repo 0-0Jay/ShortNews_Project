@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".ui.member.SignupDialogFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/nanum_gothic_bold"
+            android:text="프로필 사진을 설정해주세요."
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/profile"
+            app:civ_border_overlay="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.widget.Button
+                android:id="@+id/changeProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_sky"
+                android:backgroundTint="@color/login_button"
+                android:text="사진 변경"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:cornerRadius="8dp" />
+
+            <android.widget.Button
+                android:id="@+id/defaultProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_sky"
+                android:backgroundTint="@color/login_button"
+                android:padding="0dp"
+                android:text="기본 이미지로 변경"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/nanum_gothic_bold"
+            android:text="선호하는 카테고리를 선택해주세요."
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/category_100"
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_politics"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                <ImageButton
+                    android:id="@+id/category_101"
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_economy"
+                    app:layout_constraintStart_toEndOf="@+id/category_100"
+                    app:layout_constraintTop_toTopOf="@+id/category_100"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <ImageButton
+                    android:id="@+id/category_102"
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_society"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteX="227dp"
+                    tools:layout_editor_absoluteY="146dp" />
+
+                <ImageButton
+                    android:id="@+id/category_103"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_culture"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteX="88dp"
+                    tools:layout_editor_absoluteY="381dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/category_104"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_world"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteX="63dp"
+                    tools:layout_editor_absoluteY="492dp" />
+
+                <ImageButton
+                    android:id="@+id/category_105"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_it"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteX="265dp"
+                    tools:layout_editor_absoluteY="209dp" />
+
+                <ImageButton
+                    android:id="@+id/category_106"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_entertainment"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteX="118dp"
+                    tools:layout_editor_absoluteY="529dp" />
+
+                <ImageButton
+                    android:id="@+id/category_107"
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_color"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/category_sports"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:layout_editor_absoluteX="296dp"
+                    tools:layout_editor_absoluteY="652dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <android.widget.Button
+                android:id="@+id/skip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_white"
+                android:text="건너뛰기" />
+
+            <android.widget.Button
+                android:id="@+id/completion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_white"
+                android:backgroundTint="#353535"
+                android:text="완료"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
