@@ -51,7 +51,7 @@ def convertCategory(news_df):
 
 # 키워드 추출
 def getKeyword(summary_content):
-    tagger = Tagger(apikey='koba-MBTOTZI-CRPEEBI-SRDUSVI-FPSMISA')
+    tagger = Tagger(apikey='')
     result = []
     res = tagger.tags([summary_content])
     pa = res.pos()
